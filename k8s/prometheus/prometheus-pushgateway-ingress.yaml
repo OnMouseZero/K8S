@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pushgateway-ingress
+  namespace: kube-ops
+  annotations:
+    kubernetes.io/ingress.class: pushgateway-ingress
+spec:
+  rules:
+  - host: onmouse.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: pushgateway
+          servicePort: 9091

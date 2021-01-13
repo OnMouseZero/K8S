@@ -1,0 +1,49 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: elasticsearch
+  namespace: logging
+  labels:
+    app: elasticsearch
+spec:
+  selector:
+    app: elasticsearch
+#  type: NodePort
+#  clusterIP: None
+  ports:
+    - port: 9200
+      name: rest
+    - port: 9300
+      name: inter-node
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: elasticsearch
+#  namespace: logging
+#  labels:
+#    k8s-app: elasticsearch
+#spec:
+#  ports:
+#  - port: 9200
+#    protocol: TCP
+#    targetPort: db
+#  selector:
+#    k8s-app: elasticsearch
+#  type: NodePort
+
+#---
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: elasticsearch
+#  namespace: logging
+#spec:
+#  rules:
+#  - host: onmouse.elasticsearch.com #生产中该域名应当可以被公网解析
+#    http:
+#      paths:
+#      - path: /
+#        backend:
+#          serviceName: elasticsearch
+#          servicePort: 9200
+#
